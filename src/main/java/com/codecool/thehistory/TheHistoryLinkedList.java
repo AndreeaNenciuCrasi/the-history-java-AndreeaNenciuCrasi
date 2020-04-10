@@ -1,40 +1,47 @@
 package com.codecool.thehistory;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class TheHistoryLinkedList implements TheHistory {
     /**
      * This implementation should use a String LinkedList so don't change that!
      */
+    private String text = "Petunia is a decent little country with a strong and wise leader He sets wise laws in order to keep the country safe stable and prosperous ";
+
     private List<String> wordsLinkedList = new LinkedList<>();
 
     @Override
     public void add(String text) {
-        //TODO: check the TheHistory interface for more information
+        wordsLinkedList = new ArrayList<String>(Arrays.asList(text.split("\\s+")));
+//        for (String word : wordsLinkedList) {
+//            System.out.print(word + " ");
+//        }
     }
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        //TODO: check the TheHistory interface for more information
+        wordsLinkedList.removeIf(word -> word.equals(wordToBeRemoved));
+//        for (String word : wordsLinkedList) {
+//            System.out.print(word + " ");
+//        }
     }
 
     @Override
     public int size() {
-        //TODO: check the TheHistory interface for more information
-        return 0;
+        return wordsLinkedList.size();
     }
 
     @Override
     public void clear() {
-        //TODO: check the TheHistory interface for more information
+        wordsLinkedList.clear();
     }
 
     @Override
     public void replaceOneWord(String from, String to) {
-        //TODO: check the TheHistory interface for more information
+        Collections.replaceAll(wordsLinkedList, from, to);
+//        for (String word : wordsLinkedList) {
+//            System.out.print(word + " ");
+//        }
     }
 
     @Override
@@ -51,5 +58,30 @@ public class TheHistoryLinkedList implements TheHistory {
         if (sb.length() > 0) sb.deleteCharAt(sb.length() - 1); // last space char
         return sb.toString();
     }
+
+//    public static void main(String[] args) {
+//        TheHistoryLinkedList historyList = new TheHistoryLinkedList();
+//        historyList.add(text);
+//        System.out.println();
+//
+//        System.out.println("Size of LinkedList: " + historyList.size());
+//        System.out.print("Word to be removed:");
+//        Scanner inRemove = new Scanner(System.in);
+//        String wordToBeRemoved = inRemove.nextLine();
+//        historyList.removeWord(wordToBeRemoved);
+//
+//
+//
+//        System.out.println("\nWord to be replaced:");
+//        Scanner inFrom = new Scanner(System.in);
+//        String from = inFrom.nextLine();
+//        System.out.print("Word to be inserted:");
+//        Scanner inTo = new Scanner(System.in);
+//        String to = inTo.nextLine().toUpperCase();
+//        historyList.replaceOneWord(from, to);
+//        historyList.clear();
+//        System.out.println("\nSize of LinkedList: " + historyList.size());
+//
+//    }
 
 }
